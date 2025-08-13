@@ -1,11 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Street of Crocodiles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green-900:#0f3d2e;
+      --green-700:#146a4b;
+      --green-500:#2ea86b;
+      --green-300:#a6e6c0;
+      --lime:#b7e04e;
+      --pastel:#d8f3dc;
+      --ink:#0b0b0b;
+      --coal:#2a2a2a;
+      --stone:#8a8a8a;
+      --paper:#ffffff;
+    }
+    /* Reset-ish */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--coal);font-family:"Inknut Antiqua", serif;line-height:1.55}
+
+    /* Layout */
+    header.hero{
+      position:relative;overflow:hidden;color:var(--paper);
+      background:
+        radial-gradient(60vmax 60vmax at 110% -10%, rgba(255,255,255,0.06) 0 60%, transparent 60%),
+        radial-gradient(40vmax 40vmax at -10% 110%, rgba(255,255,255,0.06) 0 60%, transparent 60%),
+        conic-gradient(from 0deg at 50% 50%, var(--green-900), var(--green-700), var(--green-500), var(--green-700), var(--green-900));
+      min-height:56vh; display:grid; place-items:center; text-align:center; padding:6rem 1rem;
+      isolation:isolate;
+    }
+    .vortex{position:absolute; inset:0; pointer-events:none; opacity:.25; filter:blur(2px)}
+    .vortex::before{
+      content:""; position:absolute; inset:-10vmax; border-radius:50%;
+      background:
+        repeating-conic-gradient(from 0deg, rgba(255,255,255,.25) 0 6deg, transparent 6deg 12deg),
+        radial-gradient(circle at 50% 50%, transparent 0 20%, rgba(255,255,255,.08) 20% 25%, transparent 25% 30%, rgba(255,255,255,.08) 30% 35%, transparent 35% 40%, rgba(255,255,255,.08) 40% 45%, transparent 45% 50%);
+      transform:rotate(8deg) scale(1.1);
+    }
+    header.hero h1{font-size:clamp(2rem, 5vw, 4rem); letter-spacing:.5px; margin:0 0 .5rem}
+    header.hero p{max-width:60ch; margin:.25rem auto 0; opacity:.95}
+
+    nav.quick{
+      position:sticky; top:0; z-index:40; background:rgba(255,255,255,.82);
+      backdrop-filter:saturate(120%) blur(6px); border-bottom:1px solid #eaeaea;
+    }
+    .quick .wrap{display:flex; gap:.5rem; padding:.75rem 1rem; overflow:auto}
+    .quick a{flex:0 0 auto; text-decoration:none; border:1px solid var(--green-700); color:var(--green-700);
+      padding:.5rem .75rem; border-radius:999px; font-size:.9rem}
+    .quick a:hover{background:var(--green-700); color:var(--paper)}
+
+    main{max-width:1100px; margin:0 auto; padding:2rem 1rem 5rem}
+    section{margin:3.5rem 0}
+    section h2{color:var(--green-900); font-size:clamp(1.4rem,3vw,2rem); margin:0 0 .75rem}
+    section h3{color:var(--green-700); margin:2rem 0 .5rem; font-size:1.15rem}
+    p{margin:.75rem 0}
+
+    .split{display:grid; grid-template-columns:1.15fr .85fr; gap:1.25rem; align-items:start}
+    .split.reverse{grid-template-columns:.9fr 1.1fr}
+    @media (max-width: 900px){ .split, .split.reverse{grid-template-columns:1fr;}}
+
+    .card{
+      border:1px solid #e5e5e5; border-radius:18px; overflow:hidden; background:#fff;
+      box-shadow:0 12px 30px rgba(0,0,0,.06);
+    }
+    .card .img{aspect-ratio:16/10; background:linear-gradient(135deg, var(--pastel), #f6fff9); display:grid; place-items:center}
+    .card .img img{width:100%; height:100%; object-fit:cover}
+    .card .cap{padding:1rem 1.1rem; border-top:1px solid #f1f1f1; font-size:.95rem; color:#444}
+
+    .pull{border-left:4px solid var(--green-500); padding-left:1rem; color:#1d1d1d; margin:1rem 0}
+
+    footer{
+      padding:2.5rem 1rem; background:#f7faf8; border-top:1px solid #e9eee9; color:#3a3a3a
+    }
+
+    /* Back-to-top button */
+    .to-top{position:fixed; right:1rem; bottom:1rem; background:var(--green-700); color:#fff; border:none; padding:.7rem .9rem; border-radius:999px; cursor:pointer; box-shadow:0 8px 20px rgba(20,106,75,.35)}
+    .to-top:hover{background:var(--green-900)}
+  </style>
 </head>
 <body>
-    <p>Hello</p>
-</body>
-</html>
+  <header class="hero">
+    <div class="vortex"></div>
+    <div>
+      <h1>The Street of Crocodiles — Reading Site</h1>
+      <p>A single‑page experience inspired by Bruno Schulz. Designed with open layouts, generous typography, and a palette echoing crocodile greens, ink, and paper.</p>
+    </div>
+  </header>
+
+  <!-- Quick section buttons -->
+  <nav class="quick" aria-label="Section navigation">
+    <div class="wrap">
+      <a href="#about">About the Author</a>
+      <a href="#extract-1">Blinding Summer</a>
+      <a href="#extract-2">Adela & The Market</a>
+      <a href="#extract-3">Apartment Heat</a>
+      <a href="#extract-4">Semi‑Darkness</a>
+      <a href="#extract-5">Saturday Walk</a>
+      <a href="#extract-6">Market Square</a>
+      <a href="#extract-7">Chemist’s Shop</a>
+      <a href="#extract-8">Outskirts & Gardens</a>
+      <a href="#gallery">Image Notes</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about" class="split">
+      <div>
+        <h2>About Bruno Schulz</h2>
+        <p>Bruno Schulz was a remarkable Polish‑Jewish writer and artist, best known for his evocative and surreal prose that intertwines the extraordinary with the mundane, often drawing on his own childhood experiences in the small town of Drohobych. In 1892, Schulz's literary career was marked by his two major works, "The Street of Crocodiles" and "Sanatorium Under the Sign of the Hourglass," both of which highlight his unique style characterised by rich imagery and intricate metaphors. His writings reflect a deep sense of nostalgia and an uncanny ability to capture the complexities of human emotion and memory.</p>
+        <p>In addition to his literary contributions, Schulz was a talented visual artist, illustrating his own works and creating remarkable paintings that complemented his narratives. Tragically, his life was cut short during the Holocaust, but his legacy endures, influencing countless writers and artists with his imaginative storytelling and profound exploration of identity and memory.</p>
+        <div class="pull">This page pairs long‑form text with quiet imagery and a calm reading rhythm. Use the buttons above to jump to any part of the extract.</div>
+      </div>
+      <aside class="card">
+        <div class="img">
+          <img src="https://manchesterhistorian.com/wp-content/uploads/1160417_102_1160_LTg3ODI2OTk3NC0yOTA1OTQ5MDU.jpg" alt="Quiet window light across a room"/>
+        </div>
+        <div class="cap">Light and interior — a recurring mood in the extract.
+        </div>
+      </aside>
+    </section>
+
+    <section id="extract-1" class="split reverse">
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1692696355593-f1cecb9f4657?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sun‑washed street"/>
+        </div>
+        <div class="cap">Blinding summer, pages blazing like holidays.</div>
+      </aside>
+      <div>
+        <h2>Blinding Summer</h2>
+        <p>In July my father went to take the waters and left me, with my mother and elder brother, a prey to the blinding white heat of the summer days. Dizzy with light, we dipped into that enormous book of holidays, its pages blazing with sunshine and scented with the sweet melting pulp of golden pears.</p>
+      </div>
+    </section>
+
+    <section id="extract-2" class="split">
+      <div>
+        <h2>Adela &amp; The Market</h2>
+        <p>On those luminous mornings Adela returned from the market, like Pomona emerging from the flames of day, spilling from her basket the colourful beauty of the sun — the shiny pink cherries full of juice under their transparent skins, the mysterious black morellos that smelled so much better than they tasted; apricots in whose golden pulp lay the core of long afternoons.</p>
+        <p>And next to that pure poetry of fruit, she unloaded sides of meat with their keyboard of ribs swollen with energy and strength, and seaweeds of vegetables like dead octopuses and squids — the raw material of meals with a yet undefined taste, the vegetative and terrestrial ingredients of dinner, exuding a wild and rustic smell.</p>
+      </div>
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1554486855-60050042cd53?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGdyZWVuJTIwbWFya2V0fGVufDB8fDB8fHww" alt="Market fruit and produce"/>
+        </div>
+        <div class="cap">Fruit, flesh, and fragrance — abundance as imagery.</div>
+      </aside>
+    </section>
+
+    <section id="extract-3" class="split reverse">
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1642774272935-28f614bf4ef5?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sun streaks in a dim apartment"/>
+        </div>
+        <div class="cap">Heat folded into light and sound.</div>
+      </aside>
+      <div>
+        <h2>Apartment Heat</h2>
+        <p>The dark second‑floor apartment of the house in Market Square was shot through each day by the naked heat of summer: the silence of the shimmering streaks of air, the squares of brightness dreaming their intense dreams on the floor; the sound of a barrel organ rising from the deepest golden vein of day; two or three bars of a chorus, played on a distant piano over and over again, melting in the sun on the white pavement, lost in the fire of high noon.</p>
+      </div>
+    </section>
+
+    <section id="extract-4" class="split">
+      <div>
+        <h2>Semi‑Darkness</h2>
+        <p>After tidying up, Adela would plunge the rooms into semi‑darkness by drawing down the linen blinds. All colours immediately fell an octave lower, the room filled with shadows, as if it had sunk to the bottom of the sea and the light was reflected in mirrors of green water — and the heat of the day began to breathe on the blinds as they stirred slightly in their daydreams.</p>
+      </div>
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1694619313372-7cd60de19fdd?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyZWVuJTIwc2hhZG93c3xlbnwwfHwwfHx8MA%3D%3D" alt="Drawn blinds and greenish light"/>
+        </div>
+        <div class="cap">Colours fall an octave lower.</div>
+      </aside>
+    </section>
+
+    <section id="extract-5" class="split reverse">
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1512515472878-53fc91c7d6ab?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mother and child walking in sun"/>
+        </div>
+        <div class="cap">Steps from dusk into brightness.</div>
+      </aside>
+      <div>
+        <h2>Saturday Walk</h2>
+        <p>On Saturday afternoons I used to go for a walk with my mother. From the dusk of the hallway, we stepped at once into the brightness of the day. The passers‑by, bathed in melting gold, had their eyes half closed against the glare, as if they were drenched with honey.</p>
+        <p>Upper lips were drawn back, exposing the teeth. Everyone in this golden day wore that grimace of heat — as if the sun had forced his worshippers to wear identical masks of gold. The old and the young, women and children, greeted each other with these masks, painted on their faces with thick gold paint; they smiled at each other’s pagan faces — the barbaric smiles of Bacchus.</p>
+      </div>
+    </section>
+
+    <section id="extract-6" class="split">
+      <div>
+        <h2>Market Square</h2>
+        <p>Market Square was empty and white‑hot, swept by hot winds like a biblical desert. The thorny acacias, growing in this emptiness, looked with their bright leaves like the trees on old tapestries. Although there was no breath of wind, they rustled their foliage in a theatrical gesture, as if wanting to display the elegance of the silver lining of their leaves that resembled the fox‑fur lining of a nobleman’s coat.</p>
+        <p>The old houses, worn smooth by the winds of innumerable days, played tricks with the reflections of the atmosphere, with echoes and memories of colours scattered in the depth of the cloudless sky. It seemed as if whole generations of summer days, like patient stonemasons cleaning the mildewed plaster from old facades, had removed the deceptive varnish revealing more and more clearly the true face of the houses, the features that fate had given them and life had shaped for them from the inside.</p>
+        <p>Now the windows, blinded by the glare of the empty square, had fallen asleep; the balconies declared their emptiness to heaven; the open doorways smelt of coolness and wine.</p>
+      </div>
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1711689597865-03edb6cea660?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="White‑hot square"/>
+        </div>
+        <div class="cap">Old houses and sleeping windows.</div>
+      </aside>
+    </section>
+
+    <section id="extract-7" class="split reverse">
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1749532554324-96d3401f3133?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGdyZWVuJTIwamFyfGVufDB8fDB8fHwwp" alt="Chemist’s window jar"/>
+        </div>
+        <div class="cap">A jar of raspberry juice: promise of balm.</div>
+      </aside>
+      <div>
+        <h2>Chemist’s Shop</h2>
+        <p>A bunch of ragamuffins, sheltering in a corner of the square from the flaming broom of the heat, beleaguered a piece of wall, throwing buttons and coins at it over and over again, as if wishing to read in the horoscope of those metal discs the real secret written in the hieroglyphics of cracks and scratched lines. Apart from them, the square was deserted.</p>
+        <p>One expected that, any minute, the Samaritan’s donkey, led by the bridle, would stop in front of the wine merchant’s vaulted doorway and that two servants would carefully ease a sick man from the red‑hot saddle and carry him slowly up the cool stairs to the floor above, already redolent of the Sabbath.</p>
+        <p>And finally on the corner of Stryjska Street we passed within the shadow of the chemist’s shop. A large jar of raspberry juice in the wide window symbolized the coolness of balms which can relieve all kinds of pain.</p>
+      </div>
+    </section>
+
+    <section id="extract-8" class="split">
+      <div>
+        <h2>Outskirts &amp; Gardens</h2>
+        <p>After we passed a few more houses, the street ceased to maintain any pretence of urbanity, like a man returning to his little village who, piece by piece, strips off his Sunday best, slowly changing back into a peasant as he gets closer to his home.</p>
+        <p>The suburban houses were sinking, windows and all, into the exuberant tangle of blossom in their little gardens. Overlooked by the light of day, weeds and wild flowers of all kinds luxuriated quietly, glad of the interval for dreams beyond the margin of time on the borders of an endless day.</p>
+        <p>An enormous sunflower, lifted on a powerful stem and suffering from hypertrophy, clad in the yellow mourning of the last sorrowful days of its life, bent under the weight of its monstrous girth. But the naive suburban bluebells and unpretentious dimity flowers stood helpless in their starched pink and white shifts, indifferent to the sunflower’s tragedy.</p>
+      </div>
+      <aside class="card">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1603063300978-d7303c323c3d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Overgrown garden"/>
+        </div>
+        <div class="cap">Luxuriant weeds and quiet flowers at the border of time.</div>
+      </aside>
+    </section>
